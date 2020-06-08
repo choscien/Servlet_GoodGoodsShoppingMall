@@ -35,13 +35,12 @@ public class GoogleLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 로그인 로직 처리하기
-		// 1. 구글 이메일 계정 받아서 중복확인하기
+		// 구글 이메일 계정 받아서 중복확인하기
 		String email = (String)request.getParameter("email");
 		String name = (String)request.getParameter("name");
 		String nickName = (String)request.getParameter("nickName");
 		String password = (String)request.getParameter("password");
 		boolean isUseAble=new MemberService().duplicationEmail(email);
-		System.out.println(isUseAble?"가입있음":"없음");
 		//isUseAble이 true면 생성해야함 / false면 로그인만 함
 		Member googleNew=null;  //구글 새로운 로그인
 		Member googleNewReal=null;  //구글 새로운 로그인
@@ -54,8 +53,7 @@ public class GoogleLoginServlet extends HttpServlet {
 		String emailCheck=null;
 		String m_status=null;
 		
-		if(isUseAble) {//구글로 로그인 한적이 없고 가입 한적도 없슈
-			System.out.println("새거");
+		if(isUseAble) {//구글로 로그인 한적이 없고 가입 한적도 업는 이메일\
 			googleNew = new Member(email,password, name, nickName);
 			int result = new MemberService().googleEnrollMember(googleNew);
 			googleNewReal = new MemberService().loginMember(email,password);
@@ -63,17 +61,14 @@ public class GoogleLoginServlet extends HttpServlet {
 			m_status=googleNew.getM_Status();
 			m=googleNewReal;
 		}else {
-			System.out.println("헌집");
 			googleOld=new MemberService().searchEmailGetMember(email);
 			if(googleOld.getM_Password()==password) {
-				System.out.println("이거 구글로 로그인");
 				//구글로 로그인 한사람 비밀번호 같으면 구글로 로그인 실행
 					googleLogin = new MemberService().loginMember(email,password);
 					emailCheck=googleLogin.getM_EmailCheck();
 					m_status=googleLogin.getM_Status();
 					m=googleLogin;
 			}else {//구글로 가입했는데 구글로 로그인 한사람 비밀번호 다르면 구글로 가입한 계정으로 로그인
-					System.out.println("이거 구글로 가입");
 					googleAccount = new MemberService().loginMember(googleOld.getM_Email(),googleOld.getM_Password());
 					emailCheck=googleAccount.getM_EmailCheck();
 					m_status=googleAccount.getM_Status();
@@ -92,7 +87,6 @@ public class GoogleLoginServlet extends HttpServlet {
 		session.setAttribute("emailCheck", emailCheck);
 		session.setAttribute("m_status", m_status);
 		session.setAttribute("loginCount", session.getAttribute("loginCount")!=null?(int)session.getAttribute("loginCount")+1:1);
-		//request.getRequestDispatcher(request.getContextPath()+"/views/client/common/header.jsp").forward(request, response);
 		response.sendRedirect(request.getContextPath()+"/views/client/common/header.jsp");
 	}
 

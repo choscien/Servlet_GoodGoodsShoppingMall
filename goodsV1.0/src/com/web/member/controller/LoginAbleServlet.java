@@ -41,17 +41,16 @@ public class LoginAbleServlet extends HttpServlet {
 		boolean checkPassword=false;//비밀번호 맞으면 true, 틀리면 false;
 		try{
 			//가입해야하는 이메일
-				dbPassword=new MemberService().passwordCheck(emailCheck);
-				if(passwordCheck.equals(dbPassword)) {
-					checkPassword=true;
-					obj.put("isUseAble", isUseAble);
-					obj.put("checkPassword", checkPassword);
-				}else {
-					checkPassword=false;
-					obj.put("isUseAble", isUseAble);
-					obj.put("checkPassword", checkPassword);
-				}
-			
+			dbPassword=new MemberService().passwordCheck(emailCheck);
+			if(passwordCheck.equals(dbPassword)) {
+				checkPassword=true;
+				obj.put("isUseAble", isUseAble);
+				obj.put("checkPassword", checkPassword);
+			}else {
+				checkPassword=false;
+				obj.put("isUseAble", isUseAble);
+				obj.put("checkPassword", checkPassword);
+			}			
 	    }catch (Exception e) {    
 	    	e.printStackTrace();
 	    }

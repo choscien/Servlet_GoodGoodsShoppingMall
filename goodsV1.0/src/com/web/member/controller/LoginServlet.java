@@ -36,21 +36,20 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 로그인 로직 처리하기
-		// 1. client가 보낸 데이터 확인하기
+		// client가 보낸 데이터 확인하기
 		String email = (String)request.getParameter("email");
 		String pw = (String)request.getParameter("password");
 		
-		// 2. DB에 id와 pw가 일치한 값이 있는지 확인하고, 일치하는 값이 있으면 그 데이터를 가져오자
+		// DB에 id와 pw가 일치한 값이 있는지 확인하고, 일치하는 값이 있으면 그 데이터를 가져오기
 		Member m = new MemberService().loginMember(email, pw);
 		HttpSession session = request.getSession();
 		String loginResult="N";
 		String emailCheck=m.getM_EmailCheck();
 		String m_status=m.getM_Status();
-		//System.out.println(emailCheck);
-		//System.out.println(m_status);
 		if (m != null&&m_status.equals("Y")&&emailCheck.equals("Y")) {
 			loginResult="Y";		
 		}
+		//이메일 기억하기
 		String saveEmail=request.getParameter("saveEmail");
 		if(saveEmail.equals("true")) {
 			//아이디를 쿠키에 저장하게함.
@@ -69,7 +68,6 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("loginResult", loginResult);
 		session.setAttribute("emailCheck", emailCheck);
 		session.setAttribute("m_status", m_status);
-		//request.getRequestDispatcher("/header.jsp").forward(request, response);
 		response.sendRedirect("/header.jsp");
 	}
 

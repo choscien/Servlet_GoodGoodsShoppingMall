@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.web.member.model.service.MemberService;
+import com.web.member.model.vo.Member;
+
 /**
  * Servlet implementation class FindPwServlet
  */
@@ -32,13 +35,18 @@ public class FindPwServlet extends HttpServlet {
 		//새로운 비밀번호 생성 후 
 		String pwEmail=request.getParameter("findPwEmail");
 		String pwUserName=request.getParameter("findPwUserName");
-		//System.out.println(pwEmail);
-		//System.out.println(pwUserName);
 		String newPw=getRandomPassword(13);
-		request.setAttribute("password", newPw);
-		request.setAttribute("email", pwEmail);
-		RequestDispatcher rd=request.getRequestDispatcher("/memberPwEmailSend");
-		rd.forward(request, response);
+		
+		boolean result = new MemberService().checkFindPwEmail(pwEmail, pwUserName);
+		if(!result) {
+			request.setAttribute("password", newPw);
+			request.setAttribute("email", pwEmail);
+			RequestDispatcher rd=request.getRequestDispatcher("/memberPwEmailSend");
+			rd.forward(request, response);			 
+		}else {
+			response.sendRedirect(request.getContextPath()+"/index.jsp?savePw=false");
+		}
+		
 	}
 	public static String getRandomPassword(int len) {
 		  char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7',

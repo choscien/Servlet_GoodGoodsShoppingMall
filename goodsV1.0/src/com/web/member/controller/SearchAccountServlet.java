@@ -45,7 +45,6 @@ public class SearchAccountServlet extends HttpServlet {
 		    }catch (Exception e) {    
 		    	e.printStackTrace();
 		    }
-
 			
 		}else {
 			try{
