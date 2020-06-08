@@ -31,7 +31,7 @@ public class EcryptListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent arg0)  { 
-    	System.out.println(arg0.getServletContext().getRealPath("/WEB-INF"));
+    	//System.out.println(arg0.getServletContext().getRealPath("/WEB-INF"));
     	String path=arg0.getServletContext().getRealPath("/WEB-INF");
          new AESEncrypt(path);
     }

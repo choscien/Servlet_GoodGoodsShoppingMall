@@ -67,7 +67,7 @@ public class MemberPwEmailSendServlet extends HttpServlet {
 		try{
 			Authenticator auth=new Gmail();
 			Session ses=Session.getInstance(p,auth);
-			ses.setDebug(true);
+			//ses.setDebug(true);
 			MimeMessage msg=new MimeMessage(ses);		
 			msg.setSubject(subject);
 			
