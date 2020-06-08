@@ -156,7 +156,7 @@ $(function(){
                                 //$(this).removeClass('error');//input error 클래스 삭젠
                                 $(inputLogin[0]).siblings('span').remove();//input의 형제인 span 태그 삭제
                                 $(inputLogin[0]).addClass('error');//이메일 확인창에 error 클래스 지우고
-                                $(inputLogin[0]).after($('<span>').html('가입해야하는 이메일주소 입니다.').addClass('error'));// 같다고 표시할 correct 클래스 추가해서 같다고 표시하
+                                $(inputLogin[0]).after($('<span>').html('가입해야하는 이메일주소 입니다.').addClass('error'));
                                 emailCheck=false;
                             } else {
                                 $(inputLogin[0]).removeClass('error');
@@ -200,7 +200,6 @@ $(function(){
                 }
         });
 });//function onload
-console.log(saveEmail);
 if($(inputLogin[0]).val()==saveEmail) {
 	$(this).removeClass('empty error');
     $(this).siblings('span').remove();
@@ -214,7 +213,7 @@ if($(inputLogin[0]).val()==saveEmail) {
                 //$(this).removeClass('error');//input error 클래스 삭젠
                 $(inputLogin[0]).siblings('span').remove();//input의 형제인 span 태그 삭제
                 $(inputLogin[0]).addClass('error');//이메일 확인창에 error 클래스 지우고
-                $(inputLogin[0]).after($('<span>').html('가입해야하는 이메일주소 입니다.').addClass('error'));// 같다고 표시할 correct 클래스 추가해서 같다고 표시하
+                $(inputLogin[0]).after($('<span>').html('가입해야하는 이메일주소 입니다.').addClass('error'));
                 emailCheck=false;
             } else {
                 $(inputLogin[0]).removeClass('error');
@@ -225,7 +224,7 @@ if($(inputLogin[0]).val()==saveEmail) {
     })
 }
 
-//로그인 가자아 
+//로그인 form 전송
 function loginSubmit() {
     if(emailCheck==true&&passwordCheck==true) {
     	$.ajax({
@@ -248,34 +247,20 @@ function loginSubmit() {
 //sns 로그인 부분
 //구글 로그인 
 function onSignIn(googleUser) {
-    // Useful data for your client-side scripts:
-    var profile = googleUser.getBasicProfile();
-    //console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-    //console.log('Full Name: ' + profile.getName());
-    //console.log('Given Name: ' + profile.getGivenName());
-    //console.log('Family Name: ' + profile.getFamilyName());
-    //console.log("Image URL: " + profile.getImageUrl());
-    //console.log("Email: " + profile.getEmail());
     $.ajax({
 		url:contextPath+'/googleLogin',
 		type: 'post',
         data: { email: profile.getEmail(), name: profile.getName(), nickName:profile.getGivenName(), password:profile.getId() },
         success: function (login) {
-        	//console.log("성공");
-        	//console.log(sessionCount)
         	if(sessionCount==1) location.reload();
         }		
 	})
-    // The ID token you need to pass to your backend:
-    //var id_token = googleUser.getAuthResponse().id_token;
-    //console.log("ID Token: " + id_token);
     closeLogin();
 }
 //구글 로그아웃
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-        //console.log('User signed out.');
     });
 }
 
@@ -290,6 +275,7 @@ for (let i = 0; i < loginImg.length; i++) {
         $(this).fadeTo(300, 0.5);
     })
 }
+
 
 if (loginResult == 'Y') {
     var nameBar = document.getElementById("memberName");

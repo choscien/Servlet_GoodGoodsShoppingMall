@@ -47,9 +47,6 @@ public class MemberEmailCheckActionServlet extends HttpServlet {
 		String sha256=SHA256.getSHA256(email);
 		
 		boolean isRight=(sha256.equals(code))?true:false;
-		System.out.println("sha  "+sha256);
-		System.out.println("code  "+code);
-		System.out.println(isRight);
 		if(isRight==true) {
 			int rst=new MemberService().setMemberEmailChecked(email);
 			RequestDispatcher rd=null;

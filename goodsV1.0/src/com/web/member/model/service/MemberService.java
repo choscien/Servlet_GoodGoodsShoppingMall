@@ -91,5 +91,12 @@ public class MemberService {
 		close(conn);
 		return result;
 	}
+	
+	public boolean checkFindPwEmail(String pwEmail, String pwName) {
+		Connection conn=getConnection();
+		boolean result = dao.checkFindPwEmail(conn, pwEmail, pwName);
+		close(conn);
+		return result;
+	}
 
 }

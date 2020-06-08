@@ -34,7 +34,6 @@ public class SaveRandomPwServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String password=(String) request.getAttribute("password");
 		String email=(String) request.getAttribute("email");
-		System.out.println(EncryptWrapper.getSha512(password));
 		String tempPw=EncryptWrapper.getSha512(password);
 		//비밀번호 암호화 저장 로직
 		int result=new MemberService().saveTempPw(email,tempPw);

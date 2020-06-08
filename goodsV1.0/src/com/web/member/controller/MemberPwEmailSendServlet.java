@@ -42,9 +42,6 @@ public class MemberPwEmailSendServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String oriPassword=(String) request.getAttribute("password");
 		String email=(String) request.getAttribute("email");
-		System.out.println(oriPassword);
-		//String host="http://rclass.iptime.org:9999/20AM_GoodGoods/";
-		//String host="http://localhost:9090/goods/";
 		String host=request.getRequestURL().toString().replace(request.getRequestURI(),"")+request.getContextPath()+"/";
 		
 		String from="errornotzoo@gmail.com";

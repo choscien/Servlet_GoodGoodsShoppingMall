@@ -263,4 +263,26 @@ public class MemberDao {
 		}
 		return result;
 	}
+	
+	public boolean checkFindPwEmail(Connection conn, String pwEmail, String pwName) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql=prop.getProperty("checkFindPwEmail");
+		boolean flag=true;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, pwEmail);
+			pstmt.setString(2, pwName);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {//조회한거 있을때 false
+				flag=false;				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return flag;
+	}
 }

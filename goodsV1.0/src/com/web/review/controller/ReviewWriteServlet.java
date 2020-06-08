@@ -55,8 +55,6 @@ public class ReviewWriteServlet extends HttpServlet {
 			String name=(String)f.nextElement();
 			reNameFile+=mr.getFilesystemName(name);
 			oriFileName+=mr.getOriginalFileName(name);
-			System.out.println(reNameFile);
-			System.out.println(oriFileName);
 		}
 		
 		Review r=new Review(mNo, cNo, content, starPoint, oriFileName, reNameFile);

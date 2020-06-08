@@ -80,8 +80,6 @@ public class ReviewCategoryServlet extends HttpServlet {
 				starpoint+="<span class='fa fa-star'></span>";
 			}
 			Custom c=ps.customNo(list.get(j).getC_No());
-			System.out.println("커스텀넘버 : "+list.get(j).getC_No());
-			System.out.println("서블릿 커스텀파일 : "+c.getCompleteFile());
 			Product p=ps.getProduct(c.getpNo());
 			reviewList+="<div style='border-bottom: 2px solid rgba(0, 0, 0, 0.2); width: 100%;'>"
 					+ "<input id='RvNo' type='hidden' value='"+list.get(j).getRv_No()+"'>"
