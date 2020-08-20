@@ -9,6 +9,6 @@ Making Goods WebPage made of Servlet
           shit();
         }
 
-1 번호를 넣은
-2 리스트인데
-3 잘 나오나?
+1번호를 넣은
+2리스트인데
+3잘 나오나?
