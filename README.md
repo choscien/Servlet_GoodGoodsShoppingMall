@@ -8,3 +8,7 @@ Making Goods WebPage made of Servlet
         function looklikecode() {
           shit();
         }
+
+1 번호를 넣은
+2 리스트인데
+3 잘 나오나?
