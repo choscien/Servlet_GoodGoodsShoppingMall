@@ -9,6 +9,7 @@ Making Goods WebPage made of Servlet
           shit();
         }
 
+## 리스트 해볼껀데...
 *번호가
 *없는
 -리스트
