@@ -98,3 +98,4 @@ function wow() {
 $ npm start
 ```
 
+![ff](C:\Users\scien\OneDrive\바탕 화면\hahaha.jpg)
