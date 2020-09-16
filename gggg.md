@@ -2,9 +2,12 @@
 
 ###### bvb
 
-```javascript
-console.log("응");
-```
+**console.log**("응");
+
+> $$
+> 
+> $$
+
 
 $$
 console.log("응");
@@ -12,12 +15,26 @@ $$
 
 `fdfgg`
 
+****************************************************************************
+
 <!--zzzzzz-->
 
+- 1
+  - 2
+    - 3
+      - 4
+        - 5
+          - 6
 
 
-~~~~
 
+~~~~javascript
+function wow() {
+    return new Promise((resolve, reject) => {
+       console.log("개꿀 타이포라");
+       resolve("개꿀");
+    });
+}
 ~~~~
 
 [www.naver.com]()
@@ -72,3 +89,12 @@ $$
       ```
 
       
+
+![ㅠㅠ](C:\Users\scien\OneDrive\바탕 화면\ㅠㅠ.PNG)
+
+
+
+```commonlisp
+$ npm start
+```
+
