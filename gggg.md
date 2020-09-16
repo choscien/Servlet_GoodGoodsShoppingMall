@@ -1,3 +1,7 @@
+---
+typora-copy-images-to: upload
+---
+
 # gggg
 
 ###### bvb
@@ -96,4 +100,6 @@ function wow() {
 $ npm start
 ```
 
-<img src="C:\Users\scien\OneDrive\바탕 화면\dd.PNG" alt="ff" style="zoom:60%;" />
+
+
+![img](https://www.bloter.net/wp-content/uploads/2017/08/D850.jpg)
