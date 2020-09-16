@@ -90,7 +90,7 @@ function wow() {
 
       
 
-![ㅠㅠ](C:\Users\scien\OneDrive\바탕 화면\ㅠㅠ.PNG)
+![dd](C:\db\dd.PNG)
 
 
 
