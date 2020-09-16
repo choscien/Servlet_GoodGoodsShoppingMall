@@ -90,12 +90,10 @@ function wow() {
 
       
 
-![dd](C:\db\dd.PNG)
-
 
 
 ```commonlisp
 $ npm start
 ```
 
-![ff](C:\Users\scien\OneDrive\바탕 화면\hahaha.jpg)
+<img src="C:\Users\scien\OneDrive\바탕 화면\dd.PNG" alt="ff" style="zoom:60%;" />
